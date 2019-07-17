@@ -1,0 +1,36 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+<div class="card mt-3">
+  <h3 class="card-header indigo white-text text-center">{{title}}</h3>
+  <div class="card-body">
+    <p>Welcome to {{title}}</p>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col">
+    <div class="card">
+      <h4 class="card-header warning-color text-white">Left</h4>
+      <div class="card-body">
+        <p>Content</p>
+      </div>
+    </div>    
+  </div>
+  <div class="col">
+    <div class="card">
+      <h4 class="card-header success-color white-text">Center</h4>
+      <div class="card-body">
+        <p>Content</p>
+      </div>
+    </div>    
+  </div>
+  <div class="col">
+    <div class="card">
+      <h4 class="card-header red lighten-1 white-text">Right</h4>
+      <div class="card-body">
+        <p>Content</p>
+      </div>
+    </div>    
+  </div>
+</div>
+{% endblock %}
