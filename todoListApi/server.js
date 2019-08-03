@@ -7,12 +7,13 @@ var express = require('express'),
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Tododb');
+mongoose.connect('mongodb://localhost/Tododb'); 
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(function(req, res) {
+app.use((req, res) => {
   res.status(404).send({url: req.originalUrl + ' not found'})
 });
 
