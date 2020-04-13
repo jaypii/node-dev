@@ -1,0 +1,17 @@
+{
+  "name": "nodetest",
+  "version": "1.0.0",
+  "description": "Simple Node JS Server Test",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon app.jsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "J. Polzin",
+  "license": "ISC",
+  "dependencies": {
+    "cowsay": "^1.4.0",
+    "lodash": "^4.17.15",
+    "nodemon": "^2.0.3"
+  }
+}

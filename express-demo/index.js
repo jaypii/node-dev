@@ -5,9 +5,9 @@ const app = express();
 app.use(express.json());
 
 const courses = [
-   {id: 1, name: 'course1'},
-   {id: 2, name: 'course2'},
-   {id: 3, name: 'course3'}
+   {id: 1, name: 'NodeJS'},
+   {id: 2, name: 'NodeJS & React'},
+   {id: 3, name: 'Typescript'}
 ];
 
 app.get('/', (req, res) => { 
