@@ -1,7 +1,7 @@
 {
   "name": "node-express-postgresql-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js, Rest Apis with Express, Sequelize & Postgres",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
