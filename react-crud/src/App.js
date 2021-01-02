@@ -1,19 +1,20 @@
-
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-//import "./App.css";
+import { Route, Switch, Link } from "react-router-dom";
 
-import AddTutorial from "./components/AddTutorial";
-import Tutorial from "./components/Tutorial";
-import TutorialsList from "./components/TutorialsList";
+import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Footer from "./components/Footer";
+import TutorialsList from "./components/tutorials-list.component";
+import AddTutorial from "./components/add-tutorial.component";
+import Tutorial from "./components/tutorial.component";
 
 function App() {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/tutorials" className="navbar-brand">
-          bezKoder
+          <img src="logo192.png" width="30px" />
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -36,6 +37,7 @@ function App() {
           <Route path="/tutorials/:id" component={Tutorial} />
         </Switch>
       </div>
+      <Footer />
     </div>
   );
 }
