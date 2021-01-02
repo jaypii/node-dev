@@ -5,6 +5,7 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Footer from "./components/Footer";
+import Header from "./components/Header";
 import TutorialsList from "./components/tutorials-list.component";
 import AddTutorial from "./components/add-tutorial.component";
 import Tutorial from "./components/tutorial.component";
@@ -14,7 +15,7 @@ function App() {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/tutorials" className="navbar-brand">
-          <img src="logo192.png" width="30px" />
+          <img src="logo192.png" width="30px"/>
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -30,13 +31,16 @@ function App() {
         </div>
       </nav>
 
-      <div className="container mt-3">
+      <Header />
+
+      <div className="card mt-3 p-2">
         <Switch>
           <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
           <Route exact path="/add" component={AddTutorial} />
           <Route path="/tutorials/:id" component={Tutorial} />
         </Switch>
       </div>
+
       <Footer />
     </div>
   );

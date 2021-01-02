@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 export default class TutorialsList extends Component {
   constructor(props) {
     super(props);
+
+    // Event binding
     this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
     this.retrieveTutorials = this.retrieveTutorials.bind(this);
     this.refreshList = this.refreshList.bind(this);
@@ -109,6 +111,7 @@ export default class TutorialsList extends Component {
             </div>
           </div>
         </div>
+        {/* Tutorials List */}
         <div className="col-md-6">
           <h4>Tutorials List</h4>
 
@@ -135,10 +138,12 @@ export default class TutorialsList extends Component {
             Remove All
           </button>
         </div>
+        {/* Tutorial single show */}
         <div className="col-md-6">
           {currentTutorial ? (
             <div>
               <h4>Tutorial</h4>
+              <div className="card p-2">
               <div>
                 <label>
                   <strong>Title:</strong>
@@ -164,6 +169,7 @@ export default class TutorialsList extends Component {
               >
                 Edit
               </Link>
+              </div>
             </div>
           ) : (
             <div>
