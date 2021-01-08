@@ -6,75 +6,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Post overview</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <style type="text/css">
-    section {
-      border-bottom: 1px solid grey;
-      padding-bottom: 10px;
-    }
-
-    section p:first-of-type>strong {
-      color: rgb(2.8%, 11.1%, 47.6%);
-    }
-
-    section p:nth-of-type(2)>strong {
-      color: rgb(29.1%, 30.8%, 38.2%);
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 
 <body>
-  <h1>Posts and their author</h1>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <div class="container">
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    <h1>Posts and their author</h1>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const renderPost = (body, post) => {
+          const section = document.createElement('section');
+          const domString = `
+            <div class="card m-2 p-2">
+            <div class="lead">
+              Post: ${post.title}
+            </div>
+            <p>
+              <strong>Author: </strong><i>${post.author.firstName} ${post.author.lastName}</i>
+            </p>
+            </div>
+          `;
+          section.innerHTML = domString;
+          body.appendChild(section);
+        };
 
-      const renderPost = (body, post) => {
-        const section = document.createElement('section');
-        const domString = `
-          <div class="container">
-          <h3>
-            Post: ${post.title}
-          </h3>
-          <p>
-            <strong>Author: </strong><i>${post.author.firstName} ${post.author.lastName}</i>
-          </p>
-          </div>
-        `;
-        section.innerHTML = domString;
-        body.appendChild(section);
-      };
+        const promisePosts = fetch("/posts")
+          .then((response) => response.json());
 
-      const promisePosts = fetch("/posts")
-        .then((response) => response.json());
+        const promiseAuthors = promisePosts
+          .then((posts) => {
+            return Promise.all(
+              posts.map(
+                (post) => fetch(`/author/${post.authorId}`)
+                .then((r) => r.json())
+              )
+            );
+        });
 
-      const promiseAuthors = promisePosts
-        .then((posts) => {
-          return Promise.all(
-            posts.map(
-              (post) => fetch(`/author/${post.authorId}`)
-              .then((r) => r.json())
-            )
-          );
-      });
-
-      const body = document.body;
-      Promise.all([promisePosts, promiseAuthors])
-        .then(([posts, authors]) => {
-          authors.forEach((author, index) => {
-            if (posts[index]) {
-              const aggregatedPost = {...posts[index], author};
-              renderPost(body, aggregatedPost);
-            }
+        const body = document.body;
+        Promise.all([promisePosts, promiseAuthors])
+          .then(([posts, authors]) => {
+            authors.forEach((author, index) => {
+              if (posts[index]) {
+                const aggregatedPost = {...posts[index], author};
+                renderPost(body, aggregatedPost);
+              }
+            })
           })
-        })
-        .catch((e) => console.error(e));
+          .catch((e) => console.error(e));
 
-    });
-  </script>
+      });
+    </script>
   </div>
 </body>
 

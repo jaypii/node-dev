@@ -17,14 +17,14 @@ apiAuthor(app, db);
 db.sequelize.sync().then(() => {
   // populate author table with dummy data
   db.author.bulkCreate(
-    times(10, () => ({
+    times(5, () => ({
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName()
     }))
   );
   // populate post table with dummy data
   db.post.bulkCreate(
-    times(10, () => ({
+    times(5, () => ({
       title: faker.lorem.sentence(),
       content: faker.lorem.paragraph(),
       authorId: random(1, 10)
