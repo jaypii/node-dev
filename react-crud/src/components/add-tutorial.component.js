@@ -60,7 +60,6 @@ class AddTutorial extends Component {
       title: "",
       description: "",
       published: false,
-
       submitted: false
     });
   }
@@ -103,9 +102,12 @@ class AddTutorial extends Component {
                 />
               </div>
   
-              <button onClick={this.saveTutorial} className="btn btn-success">
+              <button onClick={this.saveTutorial} className="btn btn-success mr-3">
                 Submit
               </button>
+              <a href="/tutorials" className="btn btn-primary">
+                Back
+              </a>
             </div>
           )}
         </div>

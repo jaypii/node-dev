@@ -18,7 +18,8 @@ export default class Tutorial extends Component {
         description: "",
         published: false
       },
-      message: ""
+      message: "",
+      isModified: false
     };
   }
 
@@ -115,7 +116,7 @@ export default class Tutorial extends Component {
 
   render() {
     const { currentTutorial } = this.state;
-
+    const isModified = this.state.message;
     return (
       <div>
         {currentTutorial ? (
@@ -153,14 +154,14 @@ export default class Tutorial extends Component {
 
             {currentTutorial.published ? (
               <button
-                className="badge badge-primary mr-2"
+                className="btn btn-primary btn-sm mr-2"
                 onClick={() => this.updatePublished(false)}
               >
                 UnPublish
               </button>
             ) : (
               <button
-                className="badge badge-primary mr-2"
+                className="btn btn-primary btn-sm mr-2"
                 onClick={() => this.updatePublished(true)}
               >
                 Publish
@@ -168,7 +169,7 @@ export default class Tutorial extends Component {
             )}
 
             <button
-              className="badge badge-danger mr-2"
+              className="btn btn-danger btn-sm mr-2"
               onClick={this.deleteTutorial}
             >
               Delete
@@ -176,12 +177,15 @@ export default class Tutorial extends Component {
 
             <button
               type="submit"
-              className="badge badge-success"
+              className="btn btn-success btn-sm"
               onClick={this.updateTutorial}
             >
               Update
             </button>
-            <p>{this.state.message}</p>
+            {isModified
+              ? <div class="alert alert-primary mt-3" role="alert">{this.state.message}</div>
+              : <div>&nbsp;</div>
+            }
           </div>
         ) : (
           <div>
