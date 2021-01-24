@@ -1,0 +1,73 @@
+
+<h4>Tutorials List</h4>
+<div class="row">
+  <div class="col-md-6">
+    <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by title"
+          [(ngModel)]="title"
+        />
+        <button
+          class="btn btn-sm btn-outline-primary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Search
+        </button>
+    </div>
+  </div>
+  <div class="col-md-6">
+    &nbsp;
+  </div>
+</div>
+
+<div class="card mt-2 p-2">
+  <div class="row mb-3">
+    <label for="psize" class="col-sm-1 col-form-label">Items per Page:</label>
+    <div class="col-sm-2">
+      <select class="form-select" id="psize" (change)="handlePageSizeChange($event)">
+        <option *ngFor="let size of pageSizes" [ngValue]="size">
+          {{ size }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="list-group list-group-flush w-50">
+    <a
+      
+      class="list-group-item list-group-item-action"
+      *ngFor="
+        let tutorial of tutorials | paginate : {
+          itemsPerPage : pageSize,
+          currentPage: page,
+          totalItems: count
+        }; 
+        let i = index
+        "
+        href="tutorials/{{i+1}}"
+        [class.active]="i == currentIndex"
+        (click)="setActiveTutorial(tutorial, i)"
+      >
+      {{ tutorial.title }}
+      </a>
+  </div>
+  <!--
+  <button class="btn btn-sm btn-danger disabled" (click)="removeAllTutorials()">
+    Remove All
+  </button>
+  -->
+</div>
+  
+<div class="row mt-3">
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    [responsive]="true"
+    (pageChange)="handlePageChange($event)"
+  >
+  </pagination-controls>
+</div>
+  
