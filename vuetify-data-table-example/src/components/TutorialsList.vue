@@ -17,8 +17,9 @@
         <v-data-table
           :headers="headers"
           :items="tutorials"
-          disable-pagination
-          :hide-default-footer="true"
+          :disable-pagination="false"
+          :disable-filtering="false"
+          :hide-default-footer="false"
         >
           <template v-slot:[`item.actions`]="{ item }">
             <v-icon small class="mr-2" @click="editTutorial(item.id)">mdi-pencil</v-icon>
