@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ng10-js-client-crud';
+  title = 'ng12-js-client-crud';
   todayDate = new Date();
 }
