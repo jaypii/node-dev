@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
    const Post = sequelize.define('post', {
        id: {
          type: DataTypes.INTEGER,
@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
      }
    );
  
+   // Post belongs to one author
    Post.associate = (models) => {
      Post.belongsTo(models.author);
    };

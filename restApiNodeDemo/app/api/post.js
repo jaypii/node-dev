@@ -1,4 +1,4 @@
-module.exports = (app, db) => {
+export default (app, db) => {
    app.get( "/posts", (req, res) =>
      db.post.findAll().then( (result) => res.json(result) )
    );

@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes) => {
+export default (sequelize, DataTypes) => {
    const Author = sequelize.define('author', {
        id: {
          type: DataTypes.INTEGER,
@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
      }
    );
  
+   // Author can have multiple posts
    Author.associate = (models) => {
      Author.hasMany(models.post);
    };
