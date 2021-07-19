@@ -7,7 +7,8 @@ app.use(express.json());
 const courses = [
    {id: 1, name: 'NodeJS'},
    {id: 2, name: 'NodeJS & React'},
-   {id: 3, name: 'Typescript'}
+   {id: 3, name: 'Typescript'},
+   {id: 4, name: 'Angular 12 Beginner'}
 ];
 
 app.get('/', (req, res) => { 

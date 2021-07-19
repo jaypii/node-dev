@@ -15,7 +15,7 @@ function App() {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/tutorials" className="navbar-brand">
-          <img src="logo192.png" width="30px"/>
+          <img src="logo192.png" alt="React logo" width="30px"/>
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
