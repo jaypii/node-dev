@@ -1,0 +1,14 @@
+{
+  "name": "tailwind_test",
+  "version": "1.0.0",
+  "description": "Testing tailwind CSS",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "J. Polzin <jpomv2@icloud.com>",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^2.2.19"
+  }
+}
