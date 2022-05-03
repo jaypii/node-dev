@@ -12,6 +12,7 @@
   "dependencies": {
     "cowsay": "^1.4.0",
     "lodash": "^4.17.20",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.6"
   }
 }
