@@ -22,6 +22,7 @@ db.sequelize.sync().then(() => {
       lastName: faker.name.lastName()
     }))
   );
+
   // populate post table with dummy data
   db.post.bulkCreate(
     times(5, () => ({
@@ -30,5 +31,6 @@ db.sequelize.sync().then(() => {
       authorId: random(1, 10)
     }))
   );
+  
   app.listen(8080, () => console.log("App listening on port 8080!"));
 });

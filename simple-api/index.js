@@ -35,5 +35,11 @@ app.get('/', function(req, res) {
   res.sendFile(path.resolve(__dirname,'views') + '/input.html');
 });
 
+app.get('/list', function(req, res) {
+  res.sendFile(path.resolve(__dirname,'views') + '/list.html');
+});
+
+
+
 // starting the server
 app.listen( server.port , () => console.log(`Server started, listening port: ${server.port}`));
